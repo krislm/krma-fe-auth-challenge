@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="columns small-12 medium-6 large-4"></div>
+        <p>Login</p>
+        <form name="loginForm" ng-submit="login.login()">
+            <label>
+                Email
+                <input type="email" name="loginForm.email" ng-model="login.email" />
+            </label>
+            <label>
+                Password
+                <input type="password" name="loginForm.password" ng-model="login.password" />
+            </label>
+            <label>
+                Remember me
+                <input type="checkbox" />
+            </label>
+            <input class="button" type="submit" value="Login" />
+        </form>
+        <button ng-click="login.loginWithFacebook()">Login with facebook</button>
+</div>
