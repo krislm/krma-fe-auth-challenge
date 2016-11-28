@@ -4,3 +4,9 @@
         <squares user-role="shared.user.role"></squares>
     </div>
 </div>
+
+<div class="row" ng-if="shared.user.role == 'admin'">
+    <div class="columns small-12">
+        <a ui-sref="application.admins">Back to admin view</a>
+    </div>
+</div>
