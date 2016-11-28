@@ -20,6 +20,11 @@
 						controller: 'AdminsController',
 						controllerAs: 'admins'
 					}
+				},
+				resolve: {
+					user: function(UserService) {
+						return UserService.user;
+					}
 				}
 			};
 

@@ -1,4 +1,9 @@
 <div class="header">
     <a ui-sref="application.index">Home</a>
+    <button class="button" ng-click="application.logout()">Logout</button>
+</div>
+<div class="debugger">
+    <button class="button" ng-click="application.debugAdmin()">gogo admin</button>
+    <button class="button" ng-click="application.debugUser()">gogo user</button>
 </div>
 <div class="content" ui-view="application"></div>

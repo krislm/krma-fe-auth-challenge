@@ -1,0 +1,22 @@
+.square-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 30vw;
+	.square {
+		width: 150px;
+		height: 150px;
+		&.color-blue {
+			background-color: blue;
+		}
+		&.color-green {
+			background-color: green;
+		}
+		&.color-red {
+			background-color: red;
+		}
+		&.color-yellow {
+			background-color: yellow;
+		}
+	}
+}

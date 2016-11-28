@@ -17,20 +17,11 @@
 		var vm = this;
 		
 		vm.user = user;
-		
-		vm.squares = [
-			{
-				color: 'red'
-			},
-			{
-				color: 'yellow'
-			}
-		];
 
 		activate();
 
 		function activate() {
-
+			console.log('user: ',user);
 		}
 	}
 

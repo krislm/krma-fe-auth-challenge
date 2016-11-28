@@ -13,8 +13,15 @@
 
 	function run($state, $rootScope, $localStorage, UserService) {
 		
-		if ($localStorage.get('user-token')) {
-			UserService.userToken = $localStorage.get('user-token');
+		$rootScope.$storage = $localStorage;
+		
+		if ($localStorage['user-token']) {
+			UserService.userToken = $localStorage['user-token'];
+			
+		}
+		//debug
+		if ($localStorage['user']) {
+			UserService.user = $localStorage['user'];
 		}
 		
 	}

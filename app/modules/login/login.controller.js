@@ -30,13 +30,15 @@
 		}
 		
 		function login() {
-			UserService.authenticateUser();
-			var admin = false;
-			if (admin) {
-				$state.go('applicetion.admins');
-			} else {
-				$state.go('application.shared');
-			}
+			UserService.authenticateUser()
+				.then(function(data) {
+					var admin = false;
+					if (admin) {
+						$state.go('applicetion.admins');
+					} else {
+						$state.go('application.shared');
+					}
+				});
 		}
 	}
 

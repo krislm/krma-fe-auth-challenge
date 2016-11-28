@@ -15,6 +15,7 @@
 			'ui.router',
 			'angular-loading-bar',
 			'angulartics',
+			'ngStorage',
 			'angulartics.google.analytics',
 			'nCore',
 			'mm.foundation',
@@ -30,6 +31,7 @@
 			'shared',
 			'register',
 			'user',
+			'squares',
 			/* ---> Do not delete this comment (ngImports) <--- */
 	]);
 })();

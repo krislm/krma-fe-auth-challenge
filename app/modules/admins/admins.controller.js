@@ -12,14 +12,16 @@
 		.controller('AdminsController', AdminsController);
 
 	/* @ngInject */
-	function AdminsController() {
+	function AdminsController(user) {
 		/*jshint validthis: true */
 		var vm = this;
+		
+		vm.user = user;
 
 		activate();
 
 		function activate() {
-
+			console.log('user: ',user);
 		}
 	}
 
