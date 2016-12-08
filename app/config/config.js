@@ -29,8 +29,23 @@
 					   $urlRouterProvider,
 					   $locationProvider,
 					   cfpLoadingBarProvider,
-					   $httpProvider) {
-
+					   $httpProvider,
+					   nMessagesProvider) {
+		
+		var firebaseConfig = {
+			apiKey: "AIzaSyANVZSxqb__e8p98E6DaXbXrmYXwkjndIk",
+			authDomain: "authchallenge.firebaseapp.com",
+			databaseURL: "https://authchallenge.firebaseio.com",
+			storageBucket: "authchallenge.appspot.com",
+			messagingSenderId: "818571446557"
+		};
+		firebase.initializeApp(firebaseConfig);
+		
+		nMessagesProvider.configure({
+			verticalPosition: 'top',
+			horizontalPosition: 'right'
+		});
+		
 		if($logProvider.debugEnabled && DEBUG_ENV) {
 			$logProvider.debugEnabled(true);
 		} else {

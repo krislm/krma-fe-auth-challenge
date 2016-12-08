@@ -12,7 +12,7 @@
 		.service('UserService', User);
 
 	/* @ngInject */
-	function User($localStorage, $q, $http) {
+	function User($localStorage, $q, $http, $firebaseAuth) {
 		/*jshint validthis: true */
 
 		// Variables
@@ -31,26 +31,65 @@
 		var service = {
 			authenticateUser: authenticateUser,
 			authenticateUserWithFacebook: authenticateUserWithFacebook,
+			createUser: createUser,
 			logoutUser: logoutUser,
 			debugSetUser: debugSetUser,
 			user: null,
 			userToken: null
 		};
 
-		function authenticateUser() {
+		function authenticateUser(user) {
 			var deferred = $q.defer();
 			
-			//Todo: firebase auth with vm.email && vm.password
+			var auth = $firebaseAuth();
 			
-			$localStorage.$default({'user': dummyUser});
-			service.user = dummyUser;
-			deferred.resolve();
+			auth.$signInWithEmailAndPassword(user.email, user.password).then(function(firebaseUser) {
+				console.log("Signed in as:", firebaseUser);
+				deferred.resolve(firebaseUser);
+			}).catch(function(error) {
+				console.log("Authentication failed:", error);
+				deferred.reject(error);
+			});
+			
+			// $localStorage.$default({'user': firebaseUser});
 			
 			return deferred.promise;
 		}
 		
 		function authenticateUserWithFacebook() {
-			//Todo: firebase auth with fb
+			var deferred = $q.defer();
+			
+			var auth = $firebaseAuth();
+			
+			auth.$signInWithPopup("facebook").then(function(firebaseUser) {
+				console.log("Signed in as:", firebaseUser);
+				deferred.resolve(firebaseUser);
+			}).catch(function(error) {
+				console.log("Authentication failed:", error);
+				deferred.reject(error);
+			});
+			
+			// $localStorage.$default({'user': firebaseUser});
+			
+			return deferred.promise;
+		}
+		
+		function createUser(user) {
+			var deferred = $q.defer();
+			
+			var auth = $firebaseAuth();
+			
+			auth.$createUserWithEmailAndPassword(user.email, user.password).then(function(firebaseUser) {
+				console.log("Signed in as:", firebaseUser);
+				deferred.resolve(firebaseUser);
+			}).catch(function(error) {
+				console.log("Authentication failed:", error);
+				deferred.reject(error);
+			});
+			
+			// $localStorage.$default({'user': firebaseUser});
+			
+			return deferred.promise;
 		}
 		
 		function logoutUser() {

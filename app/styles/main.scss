@@ -48,12 +48,13 @@
 */
 
 // Foundation is not automatically importable by wiredep
-@import "bower_components/foundation/scss/foundation";
+//@import "bower_components/foundation/scss/foundation";
 
 
 // bower:scss
 @import "bower_components/nMessages/dist/nMessages.scss";
-@import "bower_components/foundation/scss/foundation.scss";
+@import "bower_components/foundation-sites/scss/foundation.scss";
+@import "bower_components/bourbon/app/assets/stylesheets/_bourbon.scss";
 // endbower
 
 /*
@@ -66,6 +67,7 @@
 // Elements
 @import "elements/loading-bar";
 @import "elements/square-containter";
+@import "elements/checkbox";
 /* ---> Do not delete this comment (elements) <--- */
 
 // Components

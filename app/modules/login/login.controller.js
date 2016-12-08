@@ -12,7 +12,7 @@
 		.controller('LoginController', LoginController);
 
 	/* @ngInject */
-	function LoginController($state, UserService) {
+	function LoginController($state, UserService, nMessages) {
 		/*jshint validthis: true */
 		var vm = this;
 		
@@ -30,7 +30,7 @@
 		}
 		
 		function login() {
-			UserService.authenticateUser()
+			UserService.authenticateUser({'email':vm.email, 'password':vm.password})
 				.then(function(data) {
 					var admin = false;
 					if (admin) {
@@ -38,6 +38,16 @@
 					} else {
 						$state.go('application.shared');
 					}
+				})
+				.catch(function(error) {
+					console.log(error)
+					nMessages.create({
+						type: 'alert',
+						content: error.message,
+						dismissButton: true,
+						dismissButtonHtml: '&times',
+						dismissOnClick: true
+					})
 				});
 		}
 	}
