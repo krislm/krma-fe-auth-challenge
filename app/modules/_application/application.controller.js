@@ -31,6 +31,7 @@
 			UserService.logoutUser()
 				.then(function() {
 					$state.go('application.index');
+					vm.loggedOut = true;
 				});
 		}
 		

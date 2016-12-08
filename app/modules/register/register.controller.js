@@ -12,7 +12,7 @@
 		.controller('RegisterController', RegisterController);
 
 	/* @ngInject */
-	function RegisterController($state) {
+	function RegisterController($state, UserService, nMessages) {
 		/*jshint validthis: true */
 		var vm = this;
 		
@@ -25,8 +25,21 @@
 		}
 		
 		function register() {
-			//Todo firebase register with vm.name && vm.email && vm.password
-			$state.go('application.shared');
+			UserService.createUser({'name': vm.name,'email':vm.email, 'password':vm.password})
+				.then(function(data) {
+					console.log(data);
+					$state.go('application.shared');
+				})
+				.catch(function(error) {
+					console.log(error);
+					nMessages.create({
+						type: 'alert',
+						content: error.message,
+						dismissButton: true,
+						dismissButtonHtml: '&times',
+						dismissOnClick: true
+					});
+				});
 		}
 	}
 

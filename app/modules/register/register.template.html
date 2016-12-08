@@ -1,20 +1,18 @@
 <div class="row">
-    <div class="columns small-12 medium-6 large-4">
-        <p>Register</p>
-        <form name="registerForm" ng-submit="register.register()">
-            <label>
-                Display name
-                <input type="text" name="registerForm.name" ng-model="register.name" />
-            </label>
-            <label>
-                Email
-                <input type="email" name="registerForm.email" ng-model="register.email" />
-            </label>
-            <label>
-                Password
-                <input type="password" name="registerForm.password" ng-model="register.password" />
-            </label>
-            <input class="button" type="submit" value="Register" />
-        </form>
-    </div>
+    <h2>Register</h2>
+    <form name="registerForm" ng-submit="register.register()">
+        <label class="form-element">
+            Display name
+            <input type="text" name="registerForm.name" ng-model="register.name" />
+        </label> <br>
+        <label class="form-element">
+            Email
+            <input type="email" name="registerForm.email" ng-model="register.email" />
+        </label> <br>
+        <label class="form-element">
+            Password
+            <input type="password" name="registerForm.password" ng-model="register.password" />
+        </label> <br>
+        <input class="button inverted" type="submit" value="Register" />
+    </form>
 </div>

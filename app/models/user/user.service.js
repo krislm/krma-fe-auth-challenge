@@ -35,16 +35,16 @@
 			logoutUser: logoutUser,
 			debugSetUser: debugSetUser,
 			user: null,
-			userToken: null
+			userToken: null,
+			auth: $firebaseAuth()
 		};
 
 		function authenticateUser(user) {
 			var deferred = $q.defer();
 			
-			var auth = $firebaseAuth();
-			
-			auth.$signInWithEmailAndPassword(user.email, user.password).then(function(firebaseUser) {
+			service.auth.$signInWithEmailAndPassword(user.email, user.password).then(function(firebaseUser) {
 				console.log("Signed in as:", firebaseUser);
+				service.user = firebaseUser;
 				deferred.resolve(firebaseUser);
 			}).catch(function(error) {
 				console.log("Authentication failed:", error);
@@ -59,10 +59,9 @@
 		function authenticateUserWithFacebook() {
 			var deferred = $q.defer();
 			
-			var auth = $firebaseAuth();
-			
-			auth.$signInWithPopup("facebook").then(function(firebaseUser) {
+			service.auth.$signInWithPopup("facebook").then(function(firebaseUser) {
 				console.log("Signed in as:", firebaseUser);
+				service.user = firebaseUser;
 				deferred.resolve(firebaseUser);
 			}).catch(function(error) {
 				console.log("Authentication failed:", error);
@@ -77,10 +76,9 @@
 		function createUser(user) {
 			var deferred = $q.defer();
 			
-			var auth = $firebaseAuth();
-			
-			auth.$createUserWithEmailAndPassword(user.email, user.password).then(function(firebaseUser) {
+			service.auth.$createUserWithEmailAndPassword(user.email, user.password).then(function(firebaseUser) {
 				console.log("Signed in as:", firebaseUser);
+				service.user = firebaseUser;
 				deferred.resolve(firebaseUser);
 			}).catch(function(error) {
 				console.log("Authentication failed:", error);
@@ -94,7 +92,16 @@
 		
 		function logoutUser() {
 			var deferred = $q.defer();
-			delete $localStorage.user;
+			service.auth.$signOut().then(function(args) {
+				console.log(args);
+				service.user = null;
+				service.userToken = null;
+				deferred.resolve(args);
+				delete $localStorage.user;
+			}).catch(function(error) {
+				console.log("UnAuth failed", error);
+				deferred.reject(error);
+			});
 			deferred.resolve();
 			return deferred.promise;
 		}

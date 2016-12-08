@@ -26,7 +26,25 @@
 		}
 		
 		function loginWithFacebook() {
-			
+			UserService.authenticateUserWithFacebook()
+				.then(function(data) {
+					var admin = false;
+					if (admin) {
+						$state.go('applicetion.admins');
+					} else {
+						$state.go('application.shared');
+					}
+				})
+				.catch(function(error) {
+					console.log(error);
+					nMessages.create({
+						type: 'alert',
+						content: error.message,
+						dismissButton: true,
+						dismissButtonHtml: '&times',
+						dismissOnClick: true
+					});
+				});
 		}
 		
 		function login() {
@@ -40,14 +58,14 @@
 					}
 				})
 				.catch(function(error) {
-					console.log(error)
+					console.log(error);
 					nMessages.create({
 						type: 'alert',
 						content: error.message,
 						dismissButton: true,
 						dismissButtonHtml: '&times',
 						dismissOnClick: true
-					})
+					});
 				});
 		}
 	}

@@ -1,0 +1,28 @@
+button, .button {
+	padding: 5px;
+
+	text-decoration: none;
+
+	background: transparent;
+	border: 1px solid $white;
+	color: $white;
+
+	&:hover {
+		border: 1px solid $hover-white;
+		color: $hover-white;
+	}
+
+	&.inverted {
+		background: $primary-color;
+		//border: none;//1px solid $white;
+		color: $white;
+
+		border: 1px solid transparent;
+
+		&:hover {
+			background: transparent;
+			border: 1px solid $primary-color;
+			color: $primary-color;
+		}
+	}
+}

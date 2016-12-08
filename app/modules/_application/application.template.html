@@ -1,6 +1,7 @@
 <div class="header">
     <a ui-sref="application.index">Home</a>
-    <button class="button" ng-click="application.logout()">Logout</button>
+    <h1>FE Auth Challenge - krma</h1>
+    <button class="button" ng-show="application.loggedOut" ng-click="application.logout()">Logout</button>
 </div>
 <div class="debugger">
     <button class="button" ng-click="application.debugAdmin()">gogo admin</button>

@@ -1,20 +1,23 @@
 <div class="row">
-    <div class="columns small-12 medium-6 large-4"></div>
-        <p>Login</p>
-        <form name="loginForm" ng-submit="login.login()">
-            <label>
-                Email
-                <input type="email" name="loginForm.email" ng-model="login.email" />
-            </label>
-            <label>
-                Password
-                <input type="password" name="loginForm.password" ng-model="login.password" />
-            </label>
-            <label class="label--checkbox">
-                Remember me
-                <input type="checkbox" class="checkbox" />
-            </label>
-            <input class="button" type="submit" value="Login" />
-        </form>
-        <button class="button" ng-click="login.loginWithFacebook()">Login with facebook</button>
+    <h2>Login</h2>
+    <form name="loginForm" ng-submit="login.login()">
+        <label class="form-element">
+            <span>Email</span>
+            <input type="email" name="loginForm.email" ng-model="login.email" />
+        </label> <br>
+        <label class="form-element">
+            <span>Password</span>
+            <input type="password" name="loginForm.password" ng-model="login.password" />
+        </label> <br>
+        <label>
+            <span>Remember me</span>
+            <input id="remember" name="loginForm.remember" type="checkbox" class="css-checkbox" />
+        </label>
+        <!--<label class="css-label">
+        </label>
+        <input id="remember" name="loginForm.remember" type="checkbox" class="css-checkbox" />-->
+        <input class="button inverted" type="submit" value="Login" />
+    </form>
+    <br>
+    <button class="button inverted" ng-click="login.loginWithFacebook()">Login with facebook</button>
 </div>
