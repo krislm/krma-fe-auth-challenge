@@ -1,0 +1,8 @@
+project:
+    name: krma-fe-auth-challenge
+    type: angular
+
+prepare:
+- apache
+
+docker_template: "clean-default"
